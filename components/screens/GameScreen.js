@@ -62,6 +62,22 @@ export default GameScreen = ({route, navigation}) => {
                 <Text bold color="#9a9a9a">Game of the day</Text>
             </GameStatsContainer>
 
+            <ScreenShotsContainer>
+                <ScreenShots horizontal={true} showsHorizontalScrollIndicator={false}>
+                    {game.screenshots.map((screenshot, index) => {
+                        return (
+                            <ScreenShotContainer key={index}>
+                                <ScreenShot source={screenshot}/>
+                            </ScreenShotContainer>
+                        )
+                    })}
+                </ScreenShots>
+            </ScreenShotsContainer>
+
+            <Description medium color="#9a9a9a">
+                {game.description}
+            </Description>
+
         </GameContainer>
     );
 }
@@ -133,4 +149,31 @@ const GameStatsContainer = styled.View`
 
 const Stars = styled.View`
     flex-direction:row;
+`;
+
+const ScreenShotsContainer = styled.View`
+    margin: 8px 0;
+`;
+
+const ScreenShots = styled.ScrollView`
+
+`;
+
+const ScreenShotContainer = styled.View`
+    padding:16px;
+    shadow-color:#000000;
+    shadow-offset:1px 1px;
+    shadow-opacity:0.5;
+    shadow-radius:5px;
+`;
+
+const ScreenShot = styled.Image`
+    height:200px;
+    width:300px;
+    border-radius:12px;
+`;
+
+const Description = styled(Text)`
+    margin:0 16px;
+    line-height:22px;
 `;
